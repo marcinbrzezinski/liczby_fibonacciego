@@ -1,9 +1,9 @@
 #include <iostream>
-#include <cstdlib>
+
 
 using namespace std;
 
-string add(string a,string b)
+string add(string a,string b)                   // Funkcja odpowiada za dodawanie pisemne, zamienia typ int na string
 {
     int cyfra1, cyfra2, cyfra_pam, liczba, blad;
     int c1, c2;
@@ -44,7 +44,7 @@ string add(string a,string b)
         else
         {
             c2 = liczba % 10; c1 = (liczba - c2) / 10;
-            wynik = wynik + (char)(c2 +48);
+            wynik = wynik + (char)(c2 + 48);
             cyfra_pam = 1;
         }
     }
@@ -55,7 +55,37 @@ string add(string a,string b)
     return wyn;
     }
 
-int main() {
+string liczby_fibonacciego(int n)
+{
+    int k, j;
+    string f1, f2, f3;
 
+    f1 = "1"; f2 = "1";
+    if(n > 2)
+        for (k = 3; k<= n; k++)
+        {
+            f3 = add(f1, f2);
+            f1 = f2;
+            f2 = f3;
+        }
+    if(n < 3) return "1";
+    else return f3;
+}
+
+int main() {
+    int n;
+
+    cout << "\n";
+    cout << "=================================\n";
+    cout << "==      Ciąg Fibonacciego      ==\n";
+    cout << "=================================\n";
+    cout << "\tAutor: Marcin Brzeziński\n";
+    cout << "---------------------------------\n\n\n";
+
+
+
+    cout << "Podaj wybrany element ciągu Fibonnaciego: " << endl;
+    cin >> n;
+    cout << "Liczba Fibonacciego dla elementu F" << n << " to:\n\n" << liczby_fibonacciego(n) << endl;
 
 }
